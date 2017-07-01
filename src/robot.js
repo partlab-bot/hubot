@@ -26,6 +26,14 @@ class Robot {
   // httpd       - A Boolean whether to enable the HTTP daemon.
   // name        - A String of the robot name, defaults to Hubot.
   constructor (adapterPath, adapter, httpd, name, alias) {
+    if (arguments.length == 1) {
+      var params = arguments[0]
+      adapter = params.adapter
+      httpd = params.httpd
+      name = params.name
+      alias = params.alias
+    }
+
     if (name == null) {
       name = 'Hubot'
     }
