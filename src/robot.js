@@ -7,6 +7,7 @@ const path = require('path')
 const async = require('async')
 const Log = require('log')
 const HttpClient = require('scoped-http-client')
+const deprecate = require('depd')('hubot')
 
 const Brain = require('./brain')
 const Response = require('./response')
@@ -32,6 +33,8 @@ class Robot {
       httpd = params.httpd
       name = params.name
       alias = params.alias
+    } else {
+      deprecate(`Robot constructed with multiple arguments, construct with one object argument instead`)
     }
 
     if (name == null) {
