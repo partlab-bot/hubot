@@ -26,7 +26,7 @@ module.exports = {
   CatchAllMessage: Message.CatchAllMessage,
 
   loadBot (adapterPath, adapterName, enableHttpd, botName, botAlias) {
-    deprecate("use Hubot.Robot constructor directly instead of Hubot.loadBot")
+    deprecate('use Hubot.Robot constructor directly instead of Hubot.loadBot')
 
     return new module.exports.Robot({adapter: adapterName, httpd: enableHttpd, name: botName, alias: botAlias})
   }
