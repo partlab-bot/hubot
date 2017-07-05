@@ -26,15 +26,19 @@ class Robot {
   // adapter     - A String of the adapter name.
   // httpd       - A Boolean whether to enable the HTTP daemon.
   // name        - A String of the robot name, defaults to Hubot.
-  constructor (adapterPath, adapter, httpd, name, alias) {
-    if (arguments.length == 1) {
-      var params = arguments[0]
+  constructor (params) {
+    var adapterPath, adapter, httpd, name, alias
+    if (arguments.length > 1) {
+      [adapterPath, adapter, httpd, name, alias] = arguments
+      deprecate(`Robot constructed with multiple arguments, construct with one object argument instead`)
+      if (adapterPath != null) {
+        deprecate(`Robot not longer takes an adapterPath argument. Switch to object constructor, and remove adapterPath as an option`)
+      }
+    } else {
       adapter = params.adapter
       httpd = params.httpd
       name = params.name
       alias = params.alias
-    } else {
-      deprecate(`Robot constructed with multiple arguments, construct with one object argument instead`)
     }
 
     if (name == null) {
