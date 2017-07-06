@@ -22,14 +22,16 @@ class Robot {
   // Robots receive messages from a chat source (Campfire, irc, etc), and
   // dispatch them to matching listeners.
   //
-  // adapterPath -  A String of the path to built-in adapters (defaults to src/adapters)
-  // adapter     - A String of the adapter name.
-  // httpd       - A Boolean whether to enable the HTTP daemon.
-  // name        - A String of the robot name, defaults to Hubot.
+  // @param {Object} params - parameters for building Robot
+  // @param {String} params.adapterPath -  A String of the path to built-in adapters (defaults to src/adapters)
+  // @param {String} params.adapter     - A String of the adapter name.
+  // @param {String} params.httpd       - A Boolean whether to enable the HTTP daemon.
+  // @param {String} params.name        - A String of the robot name, defaults to Hubot.
   constructor (params) {
     var adapterPath, adapter, httpd, name, alias
     if (arguments.length > 1) {
       [adapterPath, adapter, httpd, name, alias] = arguments
+
       deprecate(`Robot constructed with multiple arguments, construct with one object argument instead`)
       if (adapterPath != null) {
         deprecate(`Robot not longer takes an adapterPath argument. Switch to object constructor, and remove adapterPath as an option`)
