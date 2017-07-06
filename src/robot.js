@@ -30,7 +30,11 @@ class Robot {
   constructor (params) {
     var adapterPath, adapter, httpd, name, alias
     if (arguments.length > 1) {
-      [adapterPath, adapter, httpd, name, alias] = arguments
+      adapterPath = arguments[0]
+      adapter = arguments[1]
+      httpd = arguments[2]
+      name = arguments[3]
+      alias = arguments[4]
 
       deprecate(`Robot constructed with multiple arguments, construct with one object argument instead`)
       if (adapterPath != null) {
